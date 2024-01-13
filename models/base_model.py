@@ -19,9 +19,11 @@ class BaseModel:
         return "[BaseModel] ({}) {}".format(self.id, self.__dict__)
 
     def save(self):
+        """update class"""
         self.updated_at = datetime.now()
 
     def to_dict(self):
+        """convert object to JSON"""
         dc = self.__dict__
         dc['__class__'] = 'BaseModel'
         dc['created_at'] = dc['created_at'].isoformat()
