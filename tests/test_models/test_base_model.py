@@ -10,10 +10,10 @@ class TestBaseModel(unittest.TestCase):
     def test_update(self):
         my_model.name = "My First Model"
         my_model.my_number = 89
-        first = print(my_model)
+        first = my_model.updated_at
         my_model.save()
-        second = print(my_model)
-        self.assertEqual(first, second)
+        second = my_model.updated_at
+        self.assertFalse(first == second)
 
     def test_dict_to_json(self):
         my_model_json = my_model.to_dict()
