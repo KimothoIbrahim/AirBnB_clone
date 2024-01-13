@@ -4,10 +4,10 @@
 from models.base_model import BaseModel
 import unittest
 
+my_model = BaseModel()
 
 class TestBaseModel(unittest.TestCase):
     def test_update(self):
-        my_model = BaseModel()
         my_model.name = "My First Model"
         my_model.my_number = 89
         first = print(my_model)
