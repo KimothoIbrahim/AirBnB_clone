@@ -1,6 +1,7 @@
 import json
 import os
 
+
 class FileStorage:
     """manages storage for an app"""
     __file_path = 'file.json'
