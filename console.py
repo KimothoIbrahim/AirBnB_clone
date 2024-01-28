@@ -1,8 +1,9 @@
 #!/usr/bin/python3
-# bash script implementing a shell-like prototypig tool
+""" my console """
 
 import cmd
 import readline
+
 
 class HBNBCommand(cmd.Cmd):
     """ my prototyping tool for the Airbnb clone project """
