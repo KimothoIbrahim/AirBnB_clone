@@ -7,7 +7,7 @@ import readline
 
 class HBNBCommand(cmd.Cmd):
     """ my prototyping tool for the Airbnb clone project """
-    prompt = '(hbnb)'
+    prompt = '(hbnb) '
 
     def do_quit(self, line):
         """ quit the proto tool"""
