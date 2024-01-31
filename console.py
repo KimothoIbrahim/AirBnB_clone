@@ -4,6 +4,7 @@
 import cmd
 from models.base_model import BaseModel
 from models import storage
+import re
 import readline
 
 
@@ -108,7 +109,10 @@ class HBNBCommand(cmd.Cmd):
                     if st in oj:
                         object_to_update = oj[st]
                         if len(arr) >= 4:
-                            object_to_update.update({arr[2]: arr[3]})
+                            if re.search("^[0-9]+$", arr[3]):
+                                object_to_update.update({arr[2]: int(arr[3])})
+                            else:
+                                object_to_update.update({arr[2]: arr[3]})
                             storage.save()
                         elif len(arr) == 3:
                             print("** value missing **")
