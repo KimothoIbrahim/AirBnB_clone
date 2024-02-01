@@ -1,9 +1,9 @@
 #!/usr/bin/python3
 """ my console """
 
-import cmd
-from models.base_model import BaseModel
 from models import storage
+from models.base_model import BaseModel
+import cmd
 import re
 import readline
 
@@ -32,7 +32,7 @@ class HBNBCommand(cmd.Cmd):
     def do_create(self, cmmd):
         """ create a base model object """
 
-        if cmmd and cmmd != BaseModel().__class__.__name__:
+        if cmmd and cmmd != BaseModel.__name__:
             print("** class doesn't exist **")
         elif cmmd:
             b = BaseModel()
