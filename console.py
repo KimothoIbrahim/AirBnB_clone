@@ -3,6 +3,7 @@
 
 from models import storage
 from models.base_model import BaseModel
+from models.user import User
 import cmd
 import re
 import readline
@@ -11,6 +12,7 @@ import readline
 class HBNBCommand(cmd.Cmd):
     """ my prototyping tool for the Airbnb clone project """
     prompt = '(hbnb) '
+    lst = [User.__name__, BaseModel.__name__]
 
     def do_quit(self, line):
         """ quit the proto tool"""
@@ -31,11 +33,13 @@ class HBNBCommand(cmd.Cmd):
 
     def do_create(self, cmmd):
         """ create a base model object """
-
-        if cmmd and cmmd != BaseModel.__name__:
+        if cmmd and cmmd not in lst:
             print("** class doesn't exist **")
         elif cmmd:
-            b = BaseModel()
+            if cmmd == User.__name__:
+                b = User()
+            else:
+                b = BaseModel()
             b.save()
             print(b.id)
         else:
@@ -45,7 +49,7 @@ class HBNBCommand(cmd.Cmd):
         if cmmd:
             arr = cmmd.split()
 
-            if arr[0] != 'BaseModel':
+            if arr[0] not in self.lst:
                 print("** class does't exist **")
             elif len(arr) != 2:
                 print("** instace id missing **")
@@ -64,7 +68,7 @@ class HBNBCommand(cmd.Cmd):
         if cmmd:
             arr = cmmd.split()
 
-            if arr[0] != 'BaseModel':
+            if arr[0] not in self.lst:
                 print("** class doesn't exist **")
             elif len(arr) == 2:
                 st = arr[0] + '.' + arr[1]
@@ -85,11 +89,11 @@ class HBNBCommand(cmd.Cmd):
         """ print all present object instances """
         oj = storage.all()
 
-        if cmmd and cmmd != 'BaseModel':
+        if cmmd and cmmd not in self.lst:
             print("** class doesn't exist **")
         elif cmmd:
             for x in oj:
-                if "BaseModel" in x:
+                if cmmd in x:
                     print(oj[x])
         else:
             for x in oj:
@@ -102,7 +106,7 @@ class HBNBCommand(cmd.Cmd):
         if cmmd:
             arr = cmmd.split()
 
-            if arr[0] == "BaseModel":
+            if arr[0] in self.lst:
                 if len(arr) >= 2:
                     st = arr[0] + '.' + arr[1]
 
