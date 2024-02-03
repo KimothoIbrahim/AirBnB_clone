@@ -1,7 +1,9 @@
 #!/usr/bin/python3
 """User script"""
 
+from datetime import datetime
 from models.base_model import BaseModel
+from models.__init__ import storage
 
 
 class User(BaseModel):
@@ -10,3 +12,8 @@ class User(BaseModel):
     password = ''
     first_name = ''
     last_name = ''
+
+    def save(self):
+        """ """
+        storage.new(self)
+        storage.save()

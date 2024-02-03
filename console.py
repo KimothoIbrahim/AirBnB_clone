@@ -33,7 +33,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_create(self, cmmd):
         """ create a base model object """
-        if cmmd and cmmd not in lst:
+        if cmmd and cmmd not in self.lst:
             print("** class doesn't exist **")
         elif cmmd:
             if cmmd == User.__name__:

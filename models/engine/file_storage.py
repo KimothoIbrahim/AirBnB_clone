@@ -14,7 +14,6 @@ class FileStorage:
     def new(self, obj):
         """add  new object to collector object"""
         key = obj.__class__.__name__ + '.' + obj.id
-        print(key)
         self.__objects[key] = obj.to_dict()
 
     def save(self):
