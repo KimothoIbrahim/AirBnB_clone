@@ -4,6 +4,11 @@
 from models import storage
 from models.base_model import BaseModel
 from models.user import User
+from models.place import Place
+from models.amenity import Amenity
+from models.city import City
+from models.review import Review
+from models.state import State
 import cmd
 import re
 import readline
@@ -12,7 +17,8 @@ import readline
 class HBNBCommand(cmd.Cmd):
     """ my prototyping tool for the Airbnb clone project """
     prompt = '(hbnb) '
-    lst = [User.__name__, BaseModel.__name__]
+    lst = [User.__name__, BaseModel.__name__, Place.__name__,
+        State.__name__, City.__name__, Amenity.__name__, Review.__name__]
 
     def do_quit(self, line):
         """ quit the proto tool"""
@@ -38,6 +44,16 @@ class HBNBCommand(cmd.Cmd):
         elif cmmd:
             if cmmd == User.__name__:
                 b = User()
+            elif cmmd == Place.__name__:
+                b = Place()
+            elif cmmd == City.__name__:
+                b = City()
+            elif cmmd == State.__name__:
+                b = State()
+            elif cmmd == Review.__name__:
+                b = Review()
+            elif cmmd == Amenity.__name__:
+                b = Amenity()
             else:
                 b = BaseModel()
             b.save()
